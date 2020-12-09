@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Social Graphs</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+  <div class="header1">
+    <div class="topnav" id="myTopnav">
+      <a href="index.html">Home</a>
+      <a href="dd.html">Download Data</a>
+      <a href="stat.html">Data Stat</a>
+
+      <a href="analysis.html">Data Analysis</a>
+      <a href="notebook.html">NoteBook</a>
+
+    </div>
+    <div class="title1">
+      <h2 class="heading"> Social graphs and networks - stackoverflow</h2>
+    </div>
+  </div>
+
+
+  <!-- Download data Section -->
+  <section id="dd">
+    <div class="container">
+      <div class="row">
+        <h1>Data Stats</h1>
+        <div class="block"></div>
+
+        <h3>Summary statistics of the network<br></h3>
+        <p>After processing all our data we can start by giving a brief summery statistics of the data, in this section
+          we will get a better understading of data, networks and text.</p>
+        <h3>Understanding the data<br></h3>
+        <p>An thourough introduction to the data is used to get a better grasp on, what type of data is extracted and
+          whether or not the information can be used for further analysis and answering the questions described in the
+          Motivation.</p><br>
+        <p>First of all, we investigat how many questions have been related to each of the stated scripting languages is
+          done.
+          , the chart below shows a histogram of haw many questions
+          (the programming language on x-axis corresponds to number of questions asked into a programming language).
+        </p>
+        <div>
+          <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless"
+            src="https://plotly.com/~tato/1.embed" height="525" width="100%"></iframe>
+        </div>
+        <p>
+          Based on the histogram, on can clearly see that most of the
+          questions are asked regarding "Python", "Javascript" and "Java". which also make sense, since these languages
+          are
+          the most popular ones based one how often tutorials for a
+          given langauge is searched on Google
+
+          This is an interesting observation, and can have a significant impact on the further analysis, such as
+          questions
+          over time for each langauge, in the next figure.
+
+        </p>
+
+
+        <div>
+          <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless"
+            src="https://plotly.com/~tato/43.embed" height="525" width="100%"></iframe>
+
+        </div>
+
+        <p>
+          One can clearly that users tend to ask fewer questions related to 'python', 'java' and 'javascript'. This is
+          an interesting observation which questions whether a saturations point for the languages has been reached,
+          i.e. questions posted on Stack Overflow till this date gives you necesary knowledge about the langauges. Or
+          does the observation confirm the claims stated in the Motivation that the language used to answer questions
+          freightens people to ask new questions.
+          We will follow up on these open questions later in our analysis.
+        </p>
+        <p>Does the user deal with one or more languages? to answer this we find out
+          all languages related to the questions posted by a user.
+        </p>
+        <div>
+          <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless"
+            src="https://plotly.com/~tato/45.embed" height="525" width="100%"></iframe>
+        </div>
+        <p>
+          One can clearly see the user representations forming a triangle linking 'Python', 'Java' and 'Javascript'.
+          This imply that we have a high concentration of users related to these three language which was
+          already stated earlier. User representations placed on a straight line between two language representations
+          imply that the user have only been related to two languages, while user representation diviating from a
+          straight
+          line have only been related to multiple languages. The user representations located in the middle of the
+          langauge representations imply a
+          user have been related to only one langauge.
+
+          In fact, 2.574 user only relates to a single langauge, while 587 users relates to multiple langauges. </p>
+
+        <h3>Understanding the network<br></h3>
+        <p> The network contains 4.202 nodes representated by users and 6.846 edges connecting users,
+          In order to analyze the network a weighted graph over the whole network of stackoverflow commuinty is created,
+          The users nodes are colored by the the language
+          they are mostly related to, and edges linking users across langauges are colored in black.
+          One can clearly see that users tend to interact with
+          users of same langauge, though, users 'Python' (blue)
+          and 'Javascript' (red) tend to interact more.
+          Thus, it can be said that 'Python' and 'Javascript'
+          have more in common, which makes sense since the syntaxes are very similar.
+        </p>
+        <div>
+          <ul class="legend">
+            <li><span class="python"></span> Python</li>
+            <li><span class="javascript"></span> Javascript</li>
+            <li><span class="java"></span> Java</li>
+            <li><span class="sql"></span> Sql</li>
+            <li><span class="c"></span> C</li>
+            <li><span class="scala"></span>Scala</li>
+            <li><span class="c2"></span>C++</li>
+            <li><span class="php"></span>Php</li>
+            <li><span class="spark"></span>Apache-park</li>
+            <li><span class="oracle"></span>Oracle</li>
+
+          </ul>
+
+          <img class="zoom" data-scale="1.6" src="images/p1.svg" width="100%" height="800" name="myImage">
+          <center>
+            <script src="wheelzoom.js"></script>
+          </center>
+        </div>
+        <p> To learn about the connections between users, we investigat the
+          degree distribution for each langauge.
+          For instance, it's possible to figure out, if all users provide
+          answers to questions or if it's only a few super users providing
+          answers to a bunch of questions. The distributions are visualised in
+        </p>
+        <div>
+          <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless"
+            src="https://plotly.com/~tato/92.embed" height="525" width="100%"></iframe>
+        </div>
+        <p>The degree plots clearly shows that almost all the
+          languages have the same distribution, though the length of the tails differ a lot. For instance,
+          a single user related to 'Python' has asked more than 200 questions, while only one user related to 'Java' has
+          asked more than 70 questions.</p>
+      </div>
+      <p>
+
+        The most interesting feature of the network is that
+        all languages have a few main contributors, also called hubs.
+        This becomes very clear when testing
+      </p>
+
+      <p>
+        <b>Do most people have fewer friends than their friends have? </b><br> answer this question
+        we need to analyze the hubs of all languages therefore we do testing on the Friendship paradox.
+
+
+
+      <div style="overflow-x:auto;">
+        <table>
+          <tr>
+            <th></th>
+
+            <th>Language</th>
+            <th>Number of nodes</th>
+            <th>Number of links</th>
+            <th>Average Degree</th>
+            <th>Friendship Paradox</th>
+            <th>Friendship Statement</th>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>Full Network</td>
+            <td>4202</td>
+            <td>6846</td>
+            <td>3.258448	</td>
+            <td>True</td>
+            <td>812 out of 1000</td>
+          </tr>
+
+
+         <tr>
+            <td>1</td>
+            <td>Python</td>
+            <td>1718</td>
+            <td>2925</td>
+            <td>3.405122</td>
+            <td>True</td>
+            <td>849 out of 1000</td>
+          </tr>
+
+          <tr>
+            <td>2</td>
+            <td>Java</td>
+            <td>798</td>
+            <td>1125</td>
+            <td>2.819549</td>
+            <td>True</td>
+            <td>759 out of 1000</td>
+          </tr>
+
+          <tr>
+            <td>3</td>
+            <td>Javascript</td>
+            <td>1434</td>
+            <td>2120</td>
+            <td>2.956764</td>
+            <td>True</td>
+            <td>762 out of 1000</td>
+          </tr>
+
+
+
+
+
+        </table>
+      </div>
+
+      From the table above we can conclude that on average, 3 people interact pr. question.
+      Furthermore,
+      we test the Friendsship paradox saying that most people
+      have fewer friends than their friends have,
+      and the Friendship paradox is true e 82,4 % of the time,
+      since that 824 out of 1000 random selected users, links with users that have more "friends" than them.
+      </p>
+      <h3>Understanding the text<br></h3>
+      <p>
+        The text derived for this project, is the text from the questions asked, answers given, and what the different
+        users have written about themselves.
+        On average 4 words are used to form a question, 190 words on average to elaborate a question and 61 words on
+        average to answer a question.
+
+        Though, these numbers come with bias, as stopwords has been removed from the text. Thus, the numbers can be
+        viewed to describe only descriptive words used.
+      </p>
+
+  </section>
+
+
+</body>
+<script src="main.js"></script>
+
+</html>

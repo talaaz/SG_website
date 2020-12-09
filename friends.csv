@@ -1,0 +1,5 @@
+,Langauge,Number of nodes,Number of Links,Average Degree,Friendship Paradox,Friendship Statement
+0,Full Network,4202,6846,3.258448357924798,True,832 out of 1000
+1,Python,1783,3000,3.365114974761638,True,837 out of 1000
+2,Java,772,1098,2.844559585492228,True,776 out of 1000
+3,Javascript,1402,2086,2.9757489300998574,True,785 out of 1000

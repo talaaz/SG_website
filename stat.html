@@ -13,7 +13,7 @@
     <div class="topnav" id="myTopnav">
       <a href="index.html">Home</a>
       <a href="dd.html">Download Data</a>
-      <a href="stat.html">Data Stat</a>
+      <a href="stat.html">Data Stats</a>
 
       <a href="analysis.html">Data Analysis</a>
       <a href="notebook.html">NoteBook</a>
@@ -32,36 +32,28 @@
         <h1>Data Stats</h1>
         <div class="block"></div>
 
-        <h3>Summary statistics of the network<br></h3>
-        <p>After processing all our data we can start by giving a brief summery statistics of the data, in this section
-          we will get a better understading of data, networks and text.</p>
+        <h3>Basic statistics of the network<br></h3>
+        <p>Now that you know how we processed the data, you are ready to navigate through the Stack Overflow network.
+          This is best done by hovering over plots, and exploring the interactive visualisations by using the filtering opportunities.</p>
         <h3>Understanding the data<br></h3>
         <p>An thourough introduction to the data is used to get a better grasp on, what type of data is extracted and
           whether or not the information can be used for further analysis and answering the questions described in the
-          Motivation.</p><br>
-        <p>First of all, we investigat how many questions have been related to each of the stated scripting languages is
-          done.
-          , the chart below shows a histogram of haw many questions
-          (the programming language on x-axis corresponds to number of questions asked into a programming language).
+          <a href="index.html">Motivation</a>.</p><br>
+        <p>Use the following plot to investigate how many questions have been related to each of the programming languages.
+          The plot is a histogram showing how many questions, where the programming languages on the x-axis corresponds to number of questions asked regarding the language).
         </p>
         <div>
           <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless"
             src="https://plotly.com/~tato/1.embed" height="525" width="100%"></iframe>
         </div>
         <p>
-          Based on the histogram, on can clearly see that most of the
-          questions are asked regarding "Python", "Javascript" and "Java". which also make sense, since these languages
-          are
-          the most popular ones based one how often tutorials for a
-          given langauge is searched on Google
-
-          This is an interesting observation, and can have a significant impact on the further analysis, such as
-          questions
-          over time for each langauge, in the next figure.
-
+          Based on the histogram, it is clearly seen that most of the
+          questions are asked regarding "Python", "Javascript" and "Java". This makes sense, since these languages
+          are the most popular ones.
+          <br>
+          In the following plot you see the number of questions posted over time. Use the buttons or date slider to filter the range of dates.
         </p>
-
-
+    
         <div>
           <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless"
             src="https://plotly.com/~tato/43.embed" height="525" width="100%"></iframe>
@@ -69,24 +61,26 @@
         </div>
 
         <p>
-          One can clearly that users tend to ask fewer questions related to 'python', 'java' and 'javascript'. This is
-          an interesting observation which questions whether a saturations point for the languages has been reached,
-          i.e. questions posted on Stack Overflow till this date gives you necesary knowledge about the langauges. Or
-          does the observation confirm the claims stated in the Motivation that the language used to answer questions
+          You might have observed that there is a down trend in questions posted. This is
+          an interesting observation, which questions whether a saturation point for the programming languages has been reached,
+          meaning questions posted on Stack Overflow till this date clarifies most problems people faces when programming. 
+          It could also be that this confirms the claims stated in the <a href="index.html">Motivation</a>, that the written language used to answer questions
           freightens people to ask new questions.
-          We will follow up on these open questions later in our analysis.
+          You might want to think about this, while digging into the network.
         </p>
-        <p>Does the user deal with one or more languages? to answer this we find out
-          all languages related to the questions posted by a user.
+        <p>Let's explore if users deal with one or more programming languages. To answer this we take advantage of the open-source natural langauge
+          library <a href="fasttext.cc">FastText</a> which allows us to learn a text representation for each programming language
+          which we call language representation. Alongside with language representations we define a user representation by extracting a language representation
+          for each posted question and taking the average. To plot the representations we apply PCA to reduce the representations of 300 variables to 2 variable, while still preserving as much information as possible.
         </p>
         <div>
           <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless"
             src="https://plotly.com/~tato/45.embed" height="525" width="100%"></iframe>
         </div>
         <p>
-          One can clearly see the user representations forming a triangle linking 'Python', 'Java' and 'Javascript'.
-          This imply that we have a high concentration of users related to these three language which was
-          already stated earlier. User representations placed on a straight line between two language representations
+          Can you spot the holy triangle of programming? This triangle is linking 'Python', 'Java' and 'Javascript'.
+          This imply that we have a high concentration of users related to these three language which you might
+          already noticed. User representations placed on a straight line between two language representations
           imply that the user have only been related to two languages, while user representation diviating from a
           straight
           line have only been related to multiple languages. The user representations located in the middle of the
@@ -96,15 +90,9 @@
           In fact, 2.574 user only relates to a single langauge, while 587 users relates to multiple langauges. </p>
 
         <h3>Understanding the network<br></h3>
-        <p> The network contains 4.202 nodes representated by users and 6.846 edges connecting users,
-          In order to analyze the network a weighted graph over the whole network of stackoverflow commuinty is created,
-          The users nodes are colored by the the language
-          they are mostly related to, and edges linking users across langauges are colored in black.
-          One can clearly see that users tend to interact with
-          users of same langauge, though, users 'Python' (blue)
-          and 'Javascript' (red) tend to interact more.
-          Thus, it can be said that 'Python' and 'Javascript'
-          have more in common, which makes sense since the syntaxes are very similar.
+        <p> The network contains 4.202 users and 6.846 links connecting users. Zoom around to explore users and links.
+          The size of the dots describe the how many users a given user is interacting with, while the location of dots is determined
+          by the interconnections between users. The further away users are located, the less the user is engaging with the rest of the network.
         </p>
         <div>
           <ul class="legend">
@@ -126,18 +114,28 @@
             <script src="wheelzoom.js"></script>
           </center>
         </div>
-        <p> To learn about the connections between users, we investigat the
-          degree distribution for each langauge.
-          For instance, it's possible to figure out, if all users provide
-          answers to questions or if it's only a few super users providing
-          answers to a bunch of questions. The distributions are visualised in
+        <p>
+          Notice how the different programming languages are clustered. This imply that users tend to interact more with
+          users of same langauge, though, users of 'Python' (blue)
+          and 'Javascript' (red) have a stronger connection than the rest.
+          Thus, it can be said that 'Python' and 'Javascript'
+          have more in common, which makes sense since the syntaxes are very similar. Hover around the network and explore what other languages helps eachother.</p>
+        <br>
+
+        <p> To learn more about the network, we provide you a
+          degree distribution plot for each programming langauge.
+          Use the drop-down menu to choose between languages.
         </p>
         <div>
           <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless"
             src="https://plotly.com/~tato/92.embed" height="525" width="100%"></iframe>
         </div>
+        <p>With a distribution plot, it's possible to figure out, if all users provide
+          answers to questions or if it's only a few super-users providing
+          answers to a bunch of questions.</p>
+        <br>
         <p>The degree plots clearly shows that almost all the
-          languages have the same distribution, though the length of the tails differ a lot. For instance,
+          programming languages have the same distribution, though the length of the tails differ a lot. For instance,
           a single user related to 'Python' has asked more than 200 questions, while only one user related to 'Java' has
           asked more than 70 questions.</p>
       </div>
@@ -145,12 +143,13 @@
 
         The most interesting feature of the network is that
         all languages have a few main contributors, also called hubs.
-        This becomes very clear when testing
+        This becomes very clear when testing for the friendship paradox. The paradox states that most people
+        have fewer friends than their friends have, on average.
       </p>
 
       <p>
-        <b>Do most people have fewer friends than their friends have? </b><br> answer this question
-        we need to analyze the hubs of all languages therefore we do testing on the Friendship paradox.
+        <b>Do most people
+          have fewer friends than their friends have, on average?  </b><br>
 
 
 
@@ -213,23 +212,15 @@
 
         </table>
       </div>
-
-      From the table above we can conclude that on average, 3 people interact pr. question.
-      Furthermore,
-      we test the Friendsship paradox saying that most people
-      have fewer friends than their friends have,
-      and the Friendship paradox is true e 82,4 % of the time,
-      since that 824 out of 1000 random selected users, links with users that have more "friends" than them.
       </p>
       <h3>Understanding the text<br></h3>
       <p>
-        The text derived for this project, is the text from the questions asked, answers given, and what the different
-        users have written about themselves.
-        On average 4 words are used to form a question, 190 words on average to elaborate a question and 61 words on
+        The text derived for this project, is the text from the questions and answers posted.
+        On average 4 words are used to form a question title, 190 words on average to elaborate a question and 61 words on
         average to answer a question.
 
         Though, these numbers come with bias, as stopwords has been removed from the text. Thus, the numbers can be
-        viewed to describe only descriptive words used.
+        viewed to describe only descriptive words used. <a href="analysis.html">Jump to the text analysis</a>
       </p>
 
   </section>

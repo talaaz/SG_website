@@ -13,7 +13,7 @@
     <div class="topnav" id="myTopnav">
       <a href="index.html">Home</a>
       <a href="dd.html">Download Data</a>
-      <a href="stat.html">Data Stat</a>
+      <a href="stat.html">Data Stats</a>
       <a href="analysis.html">Data Analysis</a>
       <a href="notebook.html">NoteBook</a>
 
@@ -33,7 +33,7 @@
         <p>
         <h3>Dataset colleciton</h3><br>
         <p>
-          We want to analyze the stackoverflow forum, to do so we extract the raw data from the bigquery-public-data
+          We want to analyze the Stack OverFlow website, to do so we extract the raw data from the bigquery-public-data
           project using Google <a
             href="https://console.cloud.google.com/bigquery?pli=1&project=trim-bot-243812&folder=&organizationId=">BigQuery</a>
           .
@@ -41,14 +41,12 @@
           <br>
           <br>
         <ul>
-          -Users having been active within 2020, has a reputation above 10000, a public location and about me section.
+          -Users having been active within 2020 together with a reputation above 10000, a public location and a "about me" section
           <br>
-          - Questions posted on Stackoverflow by these users since 2018
-          with a filter on the following programming <br>
+          - Questions posted on StackOverflow after 01-01-2018 and related to the following programming <br>
           - languages "python, c++, c#, sql, java, javascript, php, .net"
           <br>
-          - Answers to Question on Stackoverflow<br>
-          - Comments to answers and questions<br>
+          -Answers related to the queried user id's<br>
         </ul>
         </p>
 
@@ -150,7 +148,7 @@
           </table>
         </div><br>
         The data was then cleaned by extracting the largest component of
-        the network of ~15.000 users and removing all isolated, By doing so, we end up having:<br><br>
+        the network. Then by removing all isolated user , we end up having:<br><br>
         - Approx. 4000 users<br>
         - Approx. 7000 questions<br>
         - Approx. 9000 questions<br>
@@ -161,11 +159,11 @@
           In order to make our dataset easier to work with,
           we process our data and clean the text data:<br>
           - Removing html tags and uris. <br>
-          - Removing punctuatin. <br>
+          - Removing punctuation. <br>
           - Removing stopwords.<br>
-          - Filtering the question tags to only include one of the 11 tags written above<br>
+          - Filtering the question tags to only include one of the main programming languages <br>
         </p>
-        <p>Next the data is cleaned and ready to be looked into </p>
+        <p>Further details can be found in the    <a href="notebook.html">NoteBook</a>. </p>
       </div>
 
 
